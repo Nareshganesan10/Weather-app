@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if api %}
+    {% if api != 'error' %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Temperature: {{api.current.temperature}}</h4>
+        <p>{{api.location.name}}</p>
+        <p>{{api.location.country}}</p>
+        <hr>
+        <p class="mb-0">{{api.location.localtime}}</p>
+    </div>
+    {% else %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">please Enter a valid city name or There is an error in the API</h4>
+    </div>
+    {% endif %}
+{% endif %}
+{% endblock content %}
