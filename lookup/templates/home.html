@@ -3,9 +3,15 @@
 {% if api %}
     {% if api != 'error' %}
     <div class="alert alert-success" role="alert">
-        <h4 class="alert-heading">Temperature: {{api.current.temperature}}</h4>
+        <h3 class="alert-heading">Temperature(C): {{api.current.temp_c}}</h3>
         <p>{{api.location.name}}</p>
+        <p>{{api.location.region}}</p>
         <p>{{api.location.country}}</p>
+        <p>Temperature(F): {{api.current.temp_f}}</p>
+        <p>Condition: {{api.current.condition.text}}</p>
+        <h5>Air quality:</h5>
+        <p>Carbon monoxide: {{api.current.air_quality.co}}</p>
+        <p>Nitrogen Dioxide: {{api.current.air_quality.no2}}</p>
         <hr>
         <p class="mb-0">{{api.location.localtime}}</p>
     </div>
