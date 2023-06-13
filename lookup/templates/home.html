@@ -21,4 +21,17 @@
     </div>
     {% endif %}
 {% endif %}
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Get the Temperature, Condition and Air quality of any city around the world...</h4>
+    <form action="{% url 'home' %}" class="d-flex" role="search" method="POST">
+        {% csrf_token %}
+        <datalist id='City'>
+          {% for city in city_list %}
+          <option value={{city.city}}></option>
+          {% endfor %}
+        </datalist>
+      <input class="form-control me-2" type="search" placeholder="City" aria-label="Search" name="City">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
 {% endblock content %}
