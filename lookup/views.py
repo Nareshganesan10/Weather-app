@@ -11,16 +11,16 @@ from lookup.serilaizers import CitySerializer
 
 def home(request):
     city_list = CityModel.objects.all()
-    print(city_list)
     if request.method == 'GET':
         return render(request, "home.html", {})
     elif request.method == "POST":
         city = request.POST['City']
-        api_request = requests.get("http://api.weatherapi.com/v1/current.json?key=9ac471934a0b45468c761301230706="+ str(city) + "&aqi=yes")
+        api_request = requests.get("http://api.weatherapi.com/v1/current.json?key=653feb430778453ab6d60823231406&q="+ str(city) + "&aqi=yes")
         try:
             api = json.loads(api_request.content)
         except Exception as e:
             api = "error"
+    print(api)
     return render(request, "home.html", {
         "api": api,
         "city_list": city_list,
